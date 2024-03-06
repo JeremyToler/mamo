@@ -42,7 +42,7 @@ def remove_roms(file_path):
         ('', '.zip')]
     for rom in files:
         for pattern in patterns:
-            file = f'{pattern[0]}{rom.partition('.')[0]}{pattern[1]}'
+            file = f'{pattern[0]}{rom.partition(".")[0]}{pattern[1]}'
             print (file)
 
 def delete_file(file, file_path):
