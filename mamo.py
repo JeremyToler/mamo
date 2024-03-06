@@ -31,18 +31,18 @@ def remove_roms(file_path):
     with open(os.path.join(script_dir, 'delete_list.txt'),'r') as rom_list: 
         files = rom_list.read().split(',')
     patterns = [
-        ('videos/', '.mp4')
-        ('manuals/', '.pdf')
-        ('manuals/', '.jpg')
-        ('images/', '-boxback.png')
-        ('images/', '-fanart.png')
-        ('images/', '-image.png')
-        ('images/', '-marquee.png')
-        ('images/', '-thumb.png')
+        ('videos/', '.mp4'),
+        ('manuals/', '.pdf'),
+        ('manuals/', '.jpg'),
+        ('images/', '-boxback.png'),
+        ('images/', '-fanart.png'),
+        ('images/', '-image.png'),
+        ('images/', '-marquee.png'),
+        ('images/', '-thumb.png'),
         ('', '.zip')]
     for rom in files:
         for pattern in patterns:
-            file = f'{pattern(0)}{rom}{pattern(1)}'
+            file = f'{pattern[0]}{rom.split('.')[0]}{pattern[1]}'
             print (file)
 
 def delete_file(file, file_path):
