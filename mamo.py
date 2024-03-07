@@ -43,10 +43,11 @@ def remove_roms(file_path):
     for rom in files:
         for pattern in patterns:
             file = f'{pattern[0]}{rom.partition(".")[0]}{pattern[1]}'
-            print (file)
+            delete_file(os.path.join(file_path, file))
 
-def delete_file(file, file_path):
+def delete_file(file):
     if os.path.isfile(file):
+        print(f'Removing {file}')
         os.remove(file)
 
 if __name__ == "__main__":
