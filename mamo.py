@@ -1,6 +1,7 @@
 import argparse
 import os
 import shutil
+import zipfile
 
 def new_list(file_path):
     script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -25,6 +26,19 @@ def move_roms(file_paths):
             print(f'Copied {rom} to {dest}')
         except:
             print(f'Could not copy {rom}')
+
+def move_chds(file_paths):
+    source, dest = file_paths
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    with open(os.path.join(script_dir, 'rom_list.txt'),'r') as rom_list: 
+        files = rom_list.read().split(',')
+    for rom in files:
+        try:
+            with zipfile.ZipFile(os.path.join(source, rom), 'r') as zip_ref:
+                zip_ref.extractall(os.path.join(dest, rom))
+            print(f'Copied {rom} to {dest}')
+        except:
+            print(f'No CHD found for {rom}')
 
 def remove_roms(file_path):
     script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -66,7 +80,11 @@ if __name__ == "__main__":
     parser.add_argument('--cp',
                         nargs='+',
                         help='''Move roms that are in the existing rom list. 
-                        mamo.py --mv /source/path /destination/path''')
+                        mamo.py --cp /source/path /destination/path''')
+    parser.add_argument('--cpchd',
+                        nargs='+',
+                        help='''Move and unzip chds that are in the existing rom list. 
+                        mamo.py --cpchd /source/path /destination/path''')
     parser.add_argument('--rm',
                         help='''Remove roms that are in delete_list.txt and in folder.
                         mamo.py --rm /file/path/to/mame''')
@@ -78,6 +96,9 @@ if __name__ == "__main__":
 
     if args.cp:
         move_roms(args.cp)
+
+    if args.cpchd:
+        move_chds(args.cpchd)
     
     if args.rm:
         remove_roms(args.rm)
