@@ -34,6 +34,7 @@ python mamo.py --cp /path/to/source/roms /path/to/destination
 
 * `--ls`: Generates a new ROM list from the specified directory.
 * `--cp`: Copies ROMs listed in the existing `rom_list.txt` file from the source to the destination directory.
+* `--cpchd`: Copies CHDs directories listed in the existing `rom_list.txt` file from the source to the destination directory.
 * `--rm`: Deletes ROMs and scrapped art listed in `delete_list.txt` file. File must be created in this scripts root directory and needs to be a list of the rom's file names seperated by a comma. The art that is deleted matches the Emulation Station/Batocera file paths. 
 
 **Notes:**
