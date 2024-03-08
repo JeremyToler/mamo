@@ -1,7 +1,7 @@
 import argparse
 import os
 import shutil
-import zipfile
+from distutils.dir_util import copy_tree
 
 def new_list(file_path):
     script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -25,7 +25,7 @@ def move_roms(file_paths):
             shutil.copy(os.path.join(source, rom), os.path.join(dest, rom))
             print(f'Copied {rom} to {dest}')
         except:
-            print(f'Could not copy {rom}')
+            print(f'Could not find {rom}')
 
 def move_chds(file_paths):
     source, dest = file_paths
@@ -33,9 +33,9 @@ def move_chds(file_paths):
     with open(os.path.join(script_dir, 'rom_list.txt'),'r') as rom_list: 
         files = rom_list.read().split(',')
     for rom in files:
+        rom = rom.partition(".")[0]
         try:
-            with zipfile.ZipFile(os.path.join(source, rom), 'r') as zip_ref:
-                zip_ref.extractall(os.path.join(dest, rom))
+            copy_tree(os.path.join(source, rom), os.path.join(dest, rom))
             print(f'Copied {rom} to {dest}')
         except:
             print(f'No CHD found for {rom}')
