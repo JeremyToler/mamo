@@ -1,7 +1,6 @@
 import argparse
 import os
 import shutil
-from distutils.dir_util import copy_tree
 
 def new_list(file_path):
     script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -35,7 +34,9 @@ def move_chds(file_paths):
     for rom in files:
         rom = rom.partition(".")[0]
         try:
-            copy_tree(os.path.join(source, rom), os.path.join(dest, rom))
+            shutil.copytree(os.path.join(source, rom),
+                            os.path.join(dest, rom),
+                            dirs_exist_ok=True)
             print(f'Copied {rom} to {dest}')
         except:
             print(f'No CHD found for {rom}')
