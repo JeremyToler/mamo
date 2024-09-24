@@ -4,7 +4,6 @@ This Python script simplifies updating your Mame ROM collection by automating th
 This script is for you if you have a merged subset of MAME ROMs for a front-end (Batocera, Emulation Station, PegasusFE, etc..) and you are hesitant to update MAME because you don't want to manually copy each ROM from a full set to your front-ends folder again.
 
 This tool does not help you update a ROMset, or convert between merged and non-merged sets. 
-This does not work on CHD's yet. I might update it later. 
 
 **Features:**
 
