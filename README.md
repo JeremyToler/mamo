@@ -48,3 +48,11 @@ python mamo.py --cp /path/to/source/roms /path/to/destination
 
 This script aims to streamline your Mame ROM management process, allowing you to focus on enjoying your favorite classic games!
 
+
+**Notes for myself**
+If you have a bunch of MAME roms that are in a different file format atool can fix that. 
+In my case I use .7z but my updated romset was .zip. 
+
+Install 7zip - `sudo apt install p7zip-full`
+Install atool - `sudo apt install atool`
+Convert all .zip files in current working directory to .7z - `arepack -e -F 7z *.zip`
