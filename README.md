@@ -49,7 +49,8 @@ python mamo.py --cp /path/to/source/roms /path/to/destination
 This script aims to streamline your Mame ROM management process, allowing you to focus on enjoying your favorite classic games!
 
 
-**Notes for myself**
+**Notes for myself:**
+
 If you have a bunch of MAME roms that are in a different file format atool can fix that. 
 In my case I use .7z but my updated romset was .zip. 
 
